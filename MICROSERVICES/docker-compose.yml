@@ -1,0 +1,120 @@
+# version: "3.0"
+services:
+
+  api-gateway-8080:
+    container_name: api-gateway-8080
+    build: ./api-gateway-8080
+    ports:
+      - 8080:8080
+    networks:
+      - node-network
+    environment:
+      - DATABASE_URL=postgresql://postgres:1111@some-postgres:5432/db_tiki?schema=public
+      - RABITMQ_URL=amqp://admin:1111@some-rabbit:5672
+      - LOGTASH_HOST=logstash
+      - LOGTASH_PORT=5044
+
+  notify-service:
+    container_name: notify-service
+    build: ./notify-service
+    networks:
+      - node-network
+    environment:
+      - DATABASE_URL=postgresql://postgres:1111@some-postgres:5432/db_tiki?schema=public
+      - RABITMQ_URL=amqp://admin:1111@some-rabbit:5672
+      - LOGTASH_HOST=logstash
+      - LOGTASH_PORT=5044
+
+  orders-service:
+    container_name: orders-service
+    build: ./orders-service
+    environment:
+      - DATABASE_URL=postgresql://postgres:1111@some-postgres:5432/db_tiki?schema=public
+      - RABITMQ_URL=amqp://admin:1111@some-rabbit:5672
+      - ELASTIC_NODE=https://elasticsearch:9200
+      - ELASTIC_USER=elasticsearch
+      - ELASTIC_PASS=111111
+      - REDIS_HOST=some-redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=1111
+      - REDIS_TTL=5000
+      - LOGTASH_HOST=logstash
+      - LOGTASH_PORT=5044
+    networks:
+      - node-network
+
+  payment-service:
+    container_name: payment-service
+    build: ./payment-service
+    environment:
+      - DATABASE_URL=postgresql://postgres:1111@some-postgres:5432/db_tiki?schema=public
+      - RABITMQ_URL=amqp://admin:1111@some-rabbit:5672
+      - ELASTIC_NODE=https://elasticsearch:9200
+      - ELASTIC_USER=elasticsearch
+      - ELASTIC_PASS=111111
+      - REDIS_HOST=some-redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=1111
+      - REDIS_TTL=5000
+      - LOGTASH_HOST=logstash
+      - LOGTASH_PORT=5044
+    networks:
+      - node-network
+
+  product-service:
+    container_name: product-service
+    build: ./product-service
+    environment:
+      - DATABASE_URL=postgresql://postgres:1111@some-postgres:5432/db_tiki?schema=public
+      - RABITMQ_URL=amqp://admin:1111@some-rabbit:5672
+      - ELASTIC_NODE=https://elasticsearch:9200
+      - ELASTIC_USER=elasticsearch
+      - ELASTIC_PASS=111111
+      - REDIS_HOST=some-redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=1111
+      - REDIS_TTL=5000
+      - LOGTASH_HOST=logstash
+      - LOGTASH_PORT=5044
+    networks:
+      - node-network
+
+  shipping-service:
+    container_name: shipping-service
+    build: ./shipping-service
+    environment:
+      - DATABASE_URL=postgresql://postgres:1111@some-postgres:5432/db_tiki?schema=public
+      - RABITMQ_URL=amqp://admin:1111@some-rabbit:5672
+      - ELASTIC_NODE=https://elasticsearch:9200
+      - ELASTIC_USER=elasticsearch
+      - ELASTIC_PASS=111111
+      - REDIS_HOST=some-redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=1111
+      - REDIS_TTL=5000
+      - LOGTASH_HOST=logstash
+      - LOGTASH_PORT=5044
+    networks:
+      - node-network
+
+  users-service:
+    container_name: users-service
+    build: ./users-service
+    environment:
+      - DATABASE_URL=postgresql://postgres:1111@some-postgres:5432/db_tiki?schema=public
+      - RABITMQ_URL=amqp://admin:1111@some-rabbit:5672
+      - ELASTIC_NODE=https://elasticsearch:9200
+      - ELASTIC_USER=elasticsearch
+      - ELASTIC_PASS=111111
+      - REDIS_HOST=some-redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=1111
+      - REDIS_TTL=5000
+      - LOGTASH_HOST=logstash
+      - LOGTASH_PORT=5044
+    networks:
+      - node-network
+
+networks:
+  node-network:
+    external: true

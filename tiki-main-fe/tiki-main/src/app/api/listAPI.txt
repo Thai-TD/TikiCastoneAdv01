@@ -1,0 +1,9 @@
+
+
+--------PRODUCTS----------
+api get list products
+-------CART-------------
+api get list cart
+api get cart detail (src\app\detail\[slug]\page.tsx)
+api update quantity (src\components\cart\ItemCart.tsx)
+api remove item from cart (src\app\cart\page.tsx)
