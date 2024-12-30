@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS public.orders (
+    id UUID PRIMARY KEY,  -- Unique identifier for the order
+    user_id UUID NOT NULL,  -- The user who placed the order
+    list_product JSONB NOT NULL,  -- List of products in JSONB format
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Timestamp for order creation
+    status VARCHAR(50) NOT NULL,  -- Order status (e.g., "pending", "completed")
+    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  -- Timestamp for the last update
+);
+

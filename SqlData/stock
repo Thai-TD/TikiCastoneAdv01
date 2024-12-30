@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS public.stock (
+    id SERIAL PRIMARY KEY,  -- Unique identifier for the stock record
+    product_id UUID NOT NULL,  -- Foreign key to the product
+    quantity INT NOT NULL,  -- Quantity of the product in stock
+    location TEXT NOT NULL,  -- Location where the product is stored (e.g., warehouse)
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Timestamp for when the stock was last updated
+    CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES public.products(id) ON DELETE CASCADE  -- Foreign key constraint
+);
+
+
+INSERT INTO public.stock (product_id, quantity, location, last_updated)
+VALUES
+  ('e62c5fe9-3eb4-44b2-9f59-2e4a3b498f29', 100, 'Warehouse A', CURRENT_TIMESTAMP),
+  ('3a5d2730-bdcb-4785-907f-d1b4bb29f80a', 200, 'Warehouse B', CURRENT_TIMESTAMP),
+  ('fc2a453b-9864-400b-bfc7-45bc2a2c6dfb', 150, 'Warehouse C', CURRENT_TIMESTAMP),
+  ('d935e6e1-9fc0-4cfc-88d5-58c4f7049744', 50, 'Warehouse D', CURRENT_TIMESTAMP),
+  ('8d8fdf5d-bcbf-4216-9d3f-798c446cb5b1', 120, 'Warehouse A', CURRENT_TIMESTAMP),
+  ('bf19f35b-e220-4ca9-86be-f97a57731c7d', 75, 'Warehouse B', CURRENT_TIMESTAMP),
+  ('a9f383f9-4981-4119-bcfa-5cf5a5a98e5d', 300, 'Warehouse C', CURRENT_TIMESTAMP),
+  ('de7e8b96-ea4b-442b-82f4-6f71e2b0a0de', 500, 'Warehouse D', CURRENT_TIMESTAMP),
+  ('7437e4c3-c606-46d4-85ff-55702f2117ac', 80, 'Warehouse A', CURRENT_TIMESTAMP),
+  ('2f3d9b6e-d41c-46c1-b40f-e0407fbed3fc', 150, 'Warehouse B', CURRENT_TIMESTAMP),
+  ('15fda5ba-e731-477d-b0a4-d1ab2d8509e7', 200, 'Warehouse C', CURRENT_TIMESTAMP),
+  ('82b91d49-4164-4f6a-83a3-b4e5ef9e8a8c', 60, 'Warehouse D', CURRENT_TIMESTAMP),
+  ('629abcf0-75b9-445b-a5c4-6f3e9b256013', 250, 'Warehouse A', CURRENT_TIMESTAMP),
+  ('dfb230d8-d513-4601-8d65-dbedb7b3d1fa', 50, 'Warehouse B', CURRENT_TIMESTAMP),
+  ('acfe2067-dcfd-4c6d-9d3f-cf9be746634d', 80, 'Warehouse C', CURRENT_TIMESTAMP),
+  ('d5e85cc9-77d5-47b9-97c5-5156f6ffed24', 90, 'Warehouse D', CURRENT_TIMESTAMP),
+  ('58b1778b-b4e2-471a-9185-fc15763122e1', 200, 'Warehouse A', CURRENT_TIMESTAMP),
+  ('3f7de90b-292f-45e6-b7a0-dfcd47cd2763', 100, 'Warehouse B', CURRENT_TIMESTAMP),
+  ('5ff6f560-2d58-4195-b725-d50f3c1baddb', 150, 'Warehouse C', CURRENT_TIMESTAMP),
+  ('9fd63b42-1708-4a7f-9b44-9404cb4208a4', 250, 'Warehouse D', CURRENT_TIMESTAMP);
+

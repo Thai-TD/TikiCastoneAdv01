@@ -1,0 +1,36 @@
+CREATE TABLE products (
+    id UUID PRIMARY KEY,  -- Use UUID for unique product identifiers
+    image TEXT NOT NULL,
+    title TEXT NOT NULL,
+    star NUMERIC(2, 1),  -- Use NUMERIC to handle decimal stars
+    price NUMERIC NOT NULL,
+    isTopDeal BOOLEAN NOT NULL,
+    isAuthentic BOOLEAN NOT NULL,
+    shipping JSONB NOT NULL,  -- Store shipping details as JSONB
+    madeIn TEXT NOT NULL
+);
+
+
+INSERT INTO public.products (id, image, title, star, price, istopdeal, isauthentic, shipping, madein)
+VALUES 
+  ('e62c5fe9-3eb4-44b2-9f59-2e4a3b498f29', '/products/laptop-1.jpg', 'Laptop X200', 4.5, 899.99, true, true, '{"type": "express", "date": "2-3 days"}', 'USA'),
+  ('3a5d2730-bdcb-4785-907f-d1b4bb29f80a', '/products/phone-1.jpg', 'Smartphone Z10', 4.7, 499.99, true, true, '{"type": "standard", "date": "5-7 days"}', 'South Korea'),
+  ('fc2a453b-9864-400b-bfc7-45bc2a2c6dfb', '/products/watch-1.jpg', 'Analog Watch A50', 4.2, 120.50, false, true, '{"type": "standard", "date": "7-10 days"}', 'Switzerland'),
+  ('d935e6e1-9fc0-4cfc-88d5-58c4f7049744', '/products/earbuds-1.jpg', 'Wireless Earbuds W100', 4.8, 79.99, true, true, '{"type": "express", "date": "1-2 days"}', 'China'),
+  ('8d8fdf5d-bcbf-4216-9d3f-798c446cb5b1', '/products/tv-1.jpg', '4K UHD TV 50" BrightView', 4.6, 499.00, true, true, '{"type": "express", "date": "2-4 days"}', 'USA'),
+  ('bf19f35b-e220-4ca9-86be-f97a57731c7d', '/products/phone-2.jpg', 'Smartphone X10', 4.4, 699.99, true, true, '{"type": "standard", "date": "3-5 days"}', 'Germany'),
+  ('a9f383f9-4981-4119-bcfa-5cf5a5a98e5d', '/products/headphones-1.jpg', 'Over-ear Headphones H500', 4.3, 129.99, false, true, '{"type": "express", "date": "2-3 days"}', 'Japan'),
+  ('de7e8b96-ea4b-442b-82f4-6f71e2b0a0de', '/products/speaker-1.jpg', 'Bluetooth Speaker S100', 4.1, 49.99, false, true, '{"type": "standard", "date": "5-7 days"}', 'China'),
+  ('7437e4c3-c606-46d4-85ff-55702f2117ac', '/products/monitor-1.jpg', '27-inch Curved Monitor', 4.7, 319.99, true, true, '{"type": "express", "date": "3-4 days"}', 'South Korea'),
+  ('2f3d9b6e-d41c-46c1-b40f-e0407fbed3fc', '/products/keyboard-1.jpg', 'Mechanical Keyboard K200', 4.2, 89.99, false, true, '{"type": "standard", "date": "5-7 days"}', 'Taiwan'),
+  ('15fda5ba-e731-477d-b0a4-d1ab2d8509e7', '/products/mouse-1.jpg', 'Gaming Mouse G500', 4.6, 59.99, true, true, '{"type": "express", "date": "1-2 days"}', 'USA'),
+  ('82b91d49-4164-4f6a-83a3-b4e5ef9e8a8c', '/products/monitor-2.jpg', '32-inch Ultra HD Monitor', 4.8, 599.99, true, true, '{"type": "express", "date": "2-3 days"}', 'South Korea'),
+  ('629abcf0-75b9-445b-a5c4-6f3e9b256013', '/products/tablet-1.jpg', 'Tablet Z7', 4.4, 350.00, false, true, '{"type": "standard", "date": "3-5 days"}', 'USA'),
+  ('dfb230d8-d513-4601-8d65-dbedb7b3d1fa', '/products/printer-1.jpg', 'Wireless Printer P900', 4.3, 199.99, false, true, '{"type": "express", "date": "2-3 days"}', 'Germany'),
+  ('acfe2067-dcfd-4c6d-9d3f-cf9be746634d', '/products/camera-1.jpg', 'DSLR Camera C100', 4.9, 799.00, true, true, '{"type": "express", "date": "1-2 days"}', 'Japan'),
+  ('d5e85cc9-77d5-47b9-97c5-5156f6ffed24', '/products/camera-2.jpg', 'Action Camera A200', 4.5, 299.99, false, true, '{"type": "standard", "date": "5-7 days"}', 'USA'),
+  ('58b1778b-b4e2-471a-9185-fc15763122e1', '/products/smartwatch-1.jpg', 'Smartwatch S300', 4.6, 149.99, true, true, '{"type": "express", "date": "2-3 days"}', 'South Korea'),
+  ('3f7de90b-292f-45e6-b7a0-dfcd47cd2763', '/products/airpods-1.jpg', 'AirPods Pro', 4.8, 249.99, true, true, '{"type": "express", "date": "1-2 days"}', 'USA'),
+  ('5ff6f560-2d58-4195-b725-d50f3c1baddb', '/products/vr-headset-1.jpg', 'VR Headset V10', 4.4, 299.00, true, true, '{"type": "standard", "date": "5-7 days"}', 'China'),
+  ('9fd63b42-1708-4a7f-9b44-9404cb4208a4', '/products/laptop-2.jpg', 'Laptop Z500', 4.6, 799.99, true, true, '{"type": "express", "date": "2-3 days"}', 'USA');
+

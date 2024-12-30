@@ -1,0 +1,31 @@
+CREATE TABLE CART_PRODUCT (
+    id UUID PRIMARY KEY,
+    user_id UUID NOT NULL,  -- The user who placed the order
+    product_data JSONB NOT NULL
+);
+
+INSERT INTO CART_PRODUCT (id, product_data)
+VALUES (
+    '14564223-3b22-42ea-ab71-498c9d199361',  -- Example UUID
+    '14564223-3b22-42ea-ab71-498c9d199361',
+    '{
+        "image": "/products/belt-1.png",
+        "name": "Belt Product",
+        "title": "The automobile layout consists of a front-engine design...",
+        "price": 19137,
+        "star": 4.5,
+        "isTopDeal": true,
+        "isAuthentic": true,
+        "quantity": 2,
+        "sale": {
+            "percent": 10
+        },
+        "shipping": {
+            "type": "fast",
+            "date": "3h"
+        },
+        "isGlobal": true,
+        "madeIn": "Vietnam"
+    }'::jsonb
+);
+

@@ -1,0 +1,40 @@
+CREATE TABLE payments (
+    id UUID PRIMARY KEY,  -- Unique ID for each payment
+    cart_product_id UUID REFERENCES cart_product(id) ON DELETE CASCADE,  -- Foreign key linking to cart_product
+    amount_paid DECIMAL(10, 2),  -- The amount paid in the transaction
+    payment_method VARCHAR(255),  -- Payment method (e.g., Credit Card, PayPal, etc.)
+    payment_status VARCHAR(50),  -- Payment status (e.g., Pending, Completed, Failed)
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Timestamp of when the payment was made
+    payment_details JSONB  -- Additional payment details as JSONB (optional),
+    order_id uuid,
+    user_id uuid
+);
+
+
+INSERT INTO payments (id, cart_product_id, amount_paid, payment_method, payment_status, payment_date, payment_details)
+VALUES (
+    'ed50f3a3-34fb-44f1-92bb-72264c74a6b4',  -- Example UUID for the payment
+    '14564223-3b22-42ea-ab71-498c9d199361',  -- Linking this payment to the product with the given UUID
+    38274.00,  -- Example amount paid
+    'Credit Card',  -- Example payment method
+    'Completed',  -- Payment status
+    CURRENT_TIMESTAMP,  -- Timestamp of the payment
+    '{
+        "transaction_id": "txn_123456789",
+        "billing_address": "123 Main St, City, Country",
+        "shipping_address": "456 Other St, City, Country"
+    }'::jsonb  -- Example payment details in JSONB format
+);
+
+SELECT 
+    p.id AS payment_id,
+    p.amount_paid,
+    p.payment_method,
+    p.payment_status,
+    p.payment_date,
+    p.payment_details,
+    cp.product_data
+FROM payments p
+JOIN cart_product cp ON p.cart_product_id = cp.id
+WHERE p.cart_product_id = '14564223-3b22-42ea-ab71-498c9d199361';  -- Example UUID of the product
+

@@ -1,0 +1,25 @@
+CREATE TABLE shipper (
+    id SERIAL PRIMARY KEY,       -- Unique identifier, auto-incremented
+    company_name VARCHAR(255) NOT NULL,   -- Shipping company name
+    contact_name VARCHAR(255),           -- Name of the contact person
+    contact_title VARCHAR(100),          -- Title of the contact person (optional)
+    address VARCHAR(255),                -- Shipping address
+    city VARCHAR(100),                   -- City
+    region VARCHAR(100),                 -- Region (optional)
+    postal_code VARCHAR(20),             -- Postal code
+    country VARCHAR(100),                -- Country
+    phone VARCHAR(50),                   -- Phone number
+    email VARCHAR(100),                  -- Email address
+    website VARCHAR(255),                -- Website URL
+    status VARCHAR(10) CHECK (status IN ('Pending', 'Busy', 'OFF')) -- Status field with validation
+);
+
+-- Inserting data into the shipper table
+INSERT INTO shipper (company_name, contact_name, contact_title, address, city, region, postal_code, country, phone, email, website, status)
+VALUES
+('FastShip Logistics', 'John Doe', 'Manager', '123 Fast Lane', 'New York', 'NY', '10001', 'USA', '555-1234', 'johndoe@fastship.com', 'www.fastship.com', 'Pending'),
+
+('QuickMove Shipping', 'Alice Johnson', 'Director', '456 Move Ave', 'Los Angeles', 'CA', '90001', 'USA', '555-5678', 'alice@quickmove.com', 'www.quickmove.com', 'Pending'),
+
+('Global Freight', 'Bob Smith', 'Owner', '789 Global Rd', 'Chicago', 'IL', '60007', 'USA', '555-9101', 'bob@globalfreight.com', 'www.globalfreight.com', 'BUSY');
+
